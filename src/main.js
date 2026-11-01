@@ -28,8 +28,6 @@ form.addEventListener('submit', e => {
 
   getImagesByQuery(searchText)
     .then(data => {
-      hideLoader();
-
       if (data.hits.length === 0) {
         iziToast.error({
           title: 'Error',
@@ -43,11 +41,11 @@ form.addEventListener('submit', e => {
       createGallery(data.hits);
     })
     .catch(error => {
-      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error.message,
         position: 'topRight',
       });
-    });
+    })
+    .finally(() => hideLoader());
 });
