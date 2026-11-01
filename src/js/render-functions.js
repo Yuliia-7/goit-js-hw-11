@@ -12,7 +12,7 @@ const galleryItem = new SimpleLightbox('.gallery a', {
 export const createGallery = images => {
   const markup = images
     .map(img => {
-      `<li class="gallery-item">
+      return `<li class="gallery-item">
   <a class="gallery-link" href="${img.largeImageURL}">
     <img
       class="gallery-image"
